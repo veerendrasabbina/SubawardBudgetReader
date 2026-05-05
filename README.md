@@ -113,24 +113,3 @@ Purdue                  $45,000.00
 U CO                    $25,000.00
 U WA                    $25,000.00
 ```
-
-## Assumptions
-
-- The spreadsheets follow the same general budget format.
-- Subrecipient rows use `Subaward: {SubRecipientName}`.
-- Some files may split `Subaward:` and the subrecipient name into separate cells on the same row.
-- The subaward amount is on the same row as the subaward label.
-- When a total column is present, the app treats that as the most reasonable official amount column. If sponsor and cost-share columns are both present, it prefers the sponsor total over cost share.
-- The app searches dynamically instead of depending on fixed row numbers.
-- A file with no subaward rows is still valid.
-- Blank or invalid amount cells are treated as zero so one bad cell does not stop the whole import.
-- Workbooks may contain multiple worksheets, and the parser checks each worksheet.
-
-## Questions I Would Ask in Real Work
-
-- Which amount column should be treated as the official subaward amount?
-- Can a workbook contain multiple sheets that need to be processed?
-- Should subrecipient names be matched case-sensitively?
-- How should blank or invalid amounts be handled?
-- Should final results be sorted alphabetically or by highest amount?
-- Should the output also be exported to CSV or Excel?
