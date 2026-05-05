@@ -122,11 +122,7 @@ I treated this as a practical import utility for a budget office, so I tried to 
 - A subrecipient row is identified by the text `Subaward:`. In some files the name appears in the same cell, like `Subaward: Mayo`; in others, `Subaward:` is in one cell and the name is in the next cell.
 - The subaward amount belongs on the same row as the `Subaward:` label.
 - When a row has both period amounts and a total amount, the total column is the best value to report.
-- When a sheet separates sponsor and cost share amounts, I treated the sponsor total as the main subaward amount for this exercise.
 - Blank or non-numeric amount cells should not stop the import. The app treats them as zero and keeps reading the rest of the workbook.
-- A workbook may have more than one worksheet, so the parser checks every sheet instead of assuming only the first sheet matters.
-- A spreadsheet with no subaward rows is still a valid input file. The app reports that no subrecipients were found rather than treating it as an error.
-- Subrecipient names are grouped case-insensitively in the final summary so `Mayo` and `mayo` would not become two separate totals.
 
 ## Questions I Would Ask in Real Work
 
@@ -137,8 +133,3 @@ If this were going into a real team workflow, these are the questions I would wa
 - Can a workbook contain multiple budget worksheets that should all be included, or should some sheets be ignored?
 - Are subrecipient names expected to be matched case-insensitively, or should the app preserve and report slight naming differences?
 - Should blank or invalid amounts be treated as zero, flagged in the console output, or written to an error report for review?
-- Should the final summary be sorted alphabetically, as it is now, or by highest total amount?
-- Should the tool export the summary to CSV or Excel so non-technical staff can share it more easily?
-- Are there other labels besides `Subaward:` that staff use in real files, such as `Subaward -`, `Subcontract`, or `Subrecipient`?
-- Should the app produce a warning if it finds a `Subaward:` label but cannot find a name next to it?
-- In production, should this become a small desktop tool or web upload page instead of a console application?
